@@ -1,0 +1,2 @@
+Token: 03fce9384b4741e0b42e036afa7ba7ed
+Docs: https://www.football-data.org/documentation/quickstart
