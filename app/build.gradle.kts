@@ -43,6 +43,11 @@ android {
 }
 
 dependencies {
+    // Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson) // Para usar Gson como convertidor JSON
+    // Picasso
+    implementation (libs.picasso)
     implementation (libs.androidx.recyclerview)
     implementation (libs.material.v190)
     implementation (libs.firebase.auth.v2130)

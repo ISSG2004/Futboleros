@@ -14,16 +14,19 @@ constraintlayout = "2.2.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseAuth = "23.1.0"
 materialVersion = "1.9.0"
+picasso = "2.8"
 playServicesAuth = "21.2.0"
 firebaseAuthKtx = "23.1.0"
 annotation = "1.6.0"
 lifecycleLivedataKtx = "2.6.1"
 lifecycleViewmodelKtx = "2.6.1"
 recyclerview = "1.3.2"
+retrofit = "2.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 firebase-auth-v2130 = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuthVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -34,12 +37,14 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 play-services-auth-v2070 = { module = "com.google.android.gms:play-services-auth", version.ref = "googlePlayServicesAuth" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

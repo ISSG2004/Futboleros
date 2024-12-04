@@ -1,2 +1,0 @@
-Token: c668c5a67cf25810cc04e05281e8bf5063474ff7812d4aeb6a7cf68eb19c2518
-Docs: https://allsportsapi.com/soccer-football-api-documentation
