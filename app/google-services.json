@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "943388584730",
+    "project_id": "futbolapppregs",
+    "storage_bucket": "futbolapppregs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943388584730:android:a294488e55434b94119aa3",
+        "android_client_info": {
+          "package_name": "com.example.juegopreguntas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943388584730-6ndcurvv8rds8btaib3m6a0lfmugef8r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.juegopreguntas",
+            "certificate_hash": "e1512148ca40bbe3e80af9bacac5fa82630f763d"
+          }
+        },
+        {
+          "client_id": "943388584730-vv38hokefkjqj5lkvladg9s2f9tkmbo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2MwYAgIs-eJjNwAgKqKA_oq1OeLbBoV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943388584730-vv38hokefkjqj5lkvladg9s2f9tkmbo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
