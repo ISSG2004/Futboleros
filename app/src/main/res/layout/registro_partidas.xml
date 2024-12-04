@@ -21,7 +21,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/design_default_color_error"
-            android:text="Borrar"
+            android:text="@string/btn_borrar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -32,7 +32,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/holo_orange_light"
-            android:text="Editar"
+            android:text="@string/btn_editar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_borrar"
             app:layout_constraintHorizontal_bias="0.0"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
-            android:text="Nombre partida:"
+            android:text="@string/lb_nombre_partida"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
-            android:text="Fecha partida:"
+            android:text="@string/lb_fecha_partida"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_nombre_partida" />
 
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
-            android:text="Puntuación:"
+            android:text="@string/lb_puntuacion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_fecha" />
 
@@ -74,7 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="68dp"
             android:layout_marginTop="20dp"
-            android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/tv_nombre_partida"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,7 +82,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/tv_nombre_partida2"
             app:layout_constraintStart_toStartOf="@+id/tv_nombre_partida2"
             app:layout_constraintTop_toBottomOf="@+id/tv_nombre_partida2" />
@@ -93,7 +91,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/tv_fecha_jugada"
             app:layout_constraintStart_toStartOf="@+id/tv_fecha_jugada"
             app:layout_constraintTop_toBottomOf="@+id/tv_fecha_jugada" />

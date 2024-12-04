@@ -20,5 +20,13 @@
     <string name="btn_finalizar_juego">Finalizar juego</string>
     <string name="lb_verdadera">Respuesta verdadera!</string>
     <string name="lb_falsa">Respuesta falsa!</string>
-
+    <string name="lb_nombre_partida">Nombre partida:</string>
+    <string name="lb_fecha_partida">Fecha partida:</string>"
+    <string name="lb_puntuacion">Puntuación:</string>
+    <string name="btn_salir">Salir</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_finalizar_pregunta">Finalizar pregunta</string>
+    <string name="btn_volver_al_inicio">Volver al Inicio</string>
+    <string name="btn_borrar">Borrar</string>
+    <string name="btn_editar">Editar</string>
 </resources>

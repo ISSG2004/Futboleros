@@ -31,7 +31,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/design_default_color_error"
-                android:text="Salir"
+                android:text="@string/btn_salir"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -42,7 +42,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@android:color/holo_orange_light"
-                android:text="Guardar"
+                android:text="@string/btn_guardar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_salir"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
-                android:text="Nombre partida:"
+                android:text="@string/lb_nombre_partida"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
-                android:text="Fecha partida:"
+                android:text="@string/lb_fecha_partida"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_nombre_partida" />
 
@@ -85,7 +85,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="88dp"
                 android:layout_marginTop="20dp"
-                android:text="Fecha"
                 app:layout_constraintStart_toEndOf="@id/tv_fecha"
                 app:layout_constraintTop_toBottomOf="@id/et_nombre_Edit" />
 
@@ -95,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
-                android:text="Puntuación:"
+                android:text="@string/lb_puntuacion"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_fecha" />
 
@@ -104,7 +103,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="0"
                 app:layout_constraintStart_toStartOf="@id/tv_fecha_jugada"
                 app:layout_constraintTop_toBottomOf="@id/tv_fecha_jugada" />
 
