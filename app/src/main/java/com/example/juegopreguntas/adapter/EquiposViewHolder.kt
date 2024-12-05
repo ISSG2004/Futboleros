@@ -3,7 +3,6 @@ package com.example.juegopreguntas.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.juegopreguntas.R
 import com.example.juegopreguntas.databinding.TarjetaEquipoBinding
 import com.example.juegopreguntas.modelos.Teams
 import com.squareup.picasso.Picasso
