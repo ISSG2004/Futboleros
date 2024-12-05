@@ -16,6 +16,9 @@
         android:theme="@style/Theme.JuegoPreguntas"
         tools:targetApi="31">
         <activity
+            android:name=".BuscadorEquiposActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarRegistroActivity"
             android:exported="false" />
         <activity

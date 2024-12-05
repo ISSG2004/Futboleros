@@ -38,11 +38,11 @@ class ArgumentarioActivity : AppCompatActivity() {
         // Determinar si la respuesta es verdadera o falsa y acumular en la lista
         if (respuestaVerdadera.isNullOrBlank()) {
             actualizarSharedPref()
-            binding.tvResultado.text = R.string.lb_verdadera.toString()
+            binding.tvResultado.text = getString(R.string.lb_verdadera)
             binding.imageView.setImageResource(R.drawable.img_acierto)
 
         } else {
-            binding.tvResultado.text = R.string.lb_falsa.toString()
+            binding.tvResultado.text = getString(R.string.lb_falsa)
             binding.imageView.setImageResource(R.drawable.img_fallo)
         }
 
@@ -67,7 +67,7 @@ class ArgumentarioActivity : AppCompatActivity() {
                 finish()
             }
         } else {
-            binding.btnSiguientePregunta.text=R.string.btn_finalizar_juego.toString()// Cambiar el texto del botón
+            binding.btnSiguientePregunta.text=getString(R.string.btn_finalizar_juego)// Cambiar el texto del botón
             // Si no quedan preguntas, finalizar el juego
             binding.btnSiguientePregunta.setOnClickListener {
                 startActivity(intentFinalizar)

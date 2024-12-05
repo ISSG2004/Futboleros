@@ -1,5 +1,6 @@
 package com.example.juegopreguntas
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -32,7 +33,6 @@ class ResultadoActivity : AppCompatActivity() {
     private fun crearRegistro(puntuacion: Int) {
         val partida = Partida(0,"Partida-"+obtenerMilisegundosDesdeEpoch(),obtenerFechaActual(),puntuacion)
         val result=Crud().create(partida)
-        Log.d("CRUD", "Resultado de la inserción: $result")
     }
 
     private fun cargarEventos() {
@@ -43,11 +43,12 @@ class ResultadoActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("StringFormatMatches")
     private fun devolverVerdaderas() {
         val sharedPreferences = getSharedPreferences("PUNTUACION", MODE_PRIVATE)
         val puntuacionActual = sharedPreferences.getInt("Respuestas_verdaderas", 0)
         crearRegistro(puntuacionActual)
-        binding.tvResultado.text = "Has acertado $puntuacionActual preguntas"
+        binding.tvResultado.text = getString(R.string.lb_resultado_final, puntuacionActual)
         if (puntuacionActual<5){
             binding.ivResultado.setImageResource(R.drawable.img_menos5)
         }else{

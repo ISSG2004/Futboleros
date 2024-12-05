@@ -4,89 +4,38 @@ import android.annotation.SuppressLint
 import com.example.juegopreguntas.Aplicacion
 import com.example.juegopreguntas.modelos.Pregunta
 
-class LeerPreguntas(){
+class LeerPreguntas {
+
     @SuppressLint("Range")
-    fun read():MutableList<Pregunta>{ //Metodo para generarme la lista con todas las preguntas de la bbdd
-        val con=Aplicacion.llave.readableDatabase
-        var lista=mutableListOf<Pregunta>()
+    fun read(): MutableList<Pregunta> { // Método para generar la lista con todas las preguntas de la BBDD
+        val con = Aplicacion.llave.readableDatabase
+        val lista = mutableListOf<Pregunta>()
+
         try {
-        // Obtener los cursores para las 4 tablas
-            val cursorPregunta = con.query(
-                Aplicacion.TABLA_PREGUNTA,
-                arrayOf("id", "texto"),
-                null, null, null, null, null
-            )
+            // Consulta SQL con JOIN para combinar las tablas
+            val query = """
+                SELECT p.id AS pregunta_id, p.texto AS pregunta_texto,
+                       rv.texto AS respuesta_verdadera,
+                       rf.texto AS respuesta_falsa,
+                       a.texto AS argumentario
+                FROM ${Aplicacion.TABLA_PREGUNTA} p
+                LEFT JOIN ${Aplicacion.TABLA_RESPUESTA_VERDADERA} rv ON p.id = rv.pregunta_id
+                LEFT JOIN ${Aplicacion.TABLA_RESPUESTA_FALSA} rf ON p.id = rf.pregunta_id
+                LEFT JOIN ${Aplicacion.TABLA_ARGUMENTARIO} a ON p.id = a.pregunta_id
+            """.trimIndent()
 
-            val cursorRVerdadera = con.query(
-                Aplicacion.TABLA_RESPUESTA_VERDADERA,
-                arrayOf("id", "texto", "pregunta_id"),
-                null, null, null, null, null
-            )
+            val cursor = con.rawQuery(query, null)
 
-            val cursorRFalsa = con.query(
-                Aplicacion.TABLA_RESPUESTA_FALSA,
-                arrayOf("id", "texto", "pregunta_id"),
-                null, null, null, null, null
-            )
-
-            val cursorArgumentario = con.query(
-                Aplicacion.TABLA_ARGUMENTARIO,
-                arrayOf("id", "texto", "pregunta_id"),
-                null, null, null, null, null
-            )
-
-            // Listas para almacenar las respuestas y argumentarios
-            val respuestasVerdaderasList = mutableListOf<Pair<Int, String>>() // id, texto
-            val respuestasFalsasList = mutableListOf<Pair<Int, String>>() // id, texto
-            val argumentariosList = mutableListOf<Pair<Int, String>>() // id, texto
-
-            // Procesar las respuestas verdaderas
-            if (cursorRVerdadera.moveToFirst()) {
+            if (cursor.moveToFirst()) {
                 do {
-                    val id = cursorRVerdadera.getInt(cursorRVerdadera.getColumnIndex("id"))
-                    val texto = cursorRVerdadera.getString(cursorRVerdadera.getColumnIndex("texto"))
-                    val preguntaId = cursorRVerdadera.getInt(cursorRVerdadera.getColumnIndex("pregunta_id"))
-                    respuestasVerdaderasList.add(Pair(preguntaId, texto))
-                } while (cursorRVerdadera.moveToNext())
-            }
-            cursorRVerdadera.close()
+                    // Obtener los datos de cada columna
+                    val preguntaId = cursor.getInt(cursor.getColumnIndex("pregunta_id"))
+                    val preguntaTexto = cursor.getString(cursor.getColumnIndex("pregunta_texto"))
+                    val respuestaVerdadera = cursor.getString(cursor.getColumnIndex("respuesta_verdadera")) ?: ""
+                    val respuestaFalsa = cursor.getString(cursor.getColumnIndex("respuesta_falsa")) ?: ""
+                    val argumentario = cursor.getString(cursor.getColumnIndex("argumentario")) ?: ""
 
-            // Procesar las respuestas falsas
-            if (cursorRFalsa.moveToFirst()) {
-                do {
-                    val id = cursorRFalsa.getInt(cursorRFalsa.getColumnIndex("id"))
-                    val texto = cursorRFalsa.getString(cursorRFalsa.getColumnIndex("texto"))
-                    val preguntaId = cursorRFalsa.getInt(cursorRFalsa.getColumnIndex("pregunta_id"))
-                    respuestasFalsasList.add(Pair(preguntaId, texto))
-                } while (cursorRFalsa.moveToNext())
-            }
-            cursorRFalsa.close()
-
-            // Procesar los argumentarios
-            if (cursorArgumentario.moveToFirst()) {
-                do {
-                    val id = cursorArgumentario.getInt(cursorArgumentario.getColumnIndex("id"))
-                    val texto = cursorArgumentario.getString(cursorArgumentario.getColumnIndex("texto"))
-                    val preguntaId = cursorArgumentario.getInt(cursorArgumentario.getColumnIndex("pregunta_id"))
-                    argumentariosList.add(Pair(preguntaId, texto))
-                } while (cursorArgumentario.moveToNext())
-            }
-            cursorArgumentario.close()
-
-            // Procesar las preguntas
-            if (cursorPregunta.moveToFirst()) {
-                do {
-                    val preguntaId = cursorPregunta.getInt(cursorPregunta.getColumnIndex("id"))
-                    val preguntaTexto = cursorPregunta.getString(cursorPregunta.getColumnIndex("texto"))
-
-                    // Buscar la respuesta verdadera y falsa para esta pregunta
-                    val respuestaVerdadera = respuestasVerdaderasList.firstOrNull { it.first == preguntaId }?.second ?: ""
-                    val respuestaFalsa = respuestasFalsasList.firstOrNull { it.first == preguntaId }?.second ?: ""
-
-                    // Buscar el argumentario para esta pregunta
-                    val argumentario = argumentariosList.firstOrNull { it.first == preguntaId }?.second ?: ""
-
-                    // Crear la pregunta completa y añadirla a la lista
+                    // Crear el objeto Pregunta
                     val preguntaCompleta = Pregunta(
                         enunciadoPregunta = preguntaTexto,
                         respuestaVerdadera = respuestaVerdadera,
@@ -94,19 +43,19 @@ class LeerPreguntas(){
                         argumentario = argumentario
                     )
 
+                    // Añadir la pregunta a la lista
                     lista.add(preguntaCompleta)
 
-                } while (cursorPregunta.moveToNext())
+                } while (cursor.moveToNext())
             }
-            cursorPregunta.close()
-        }   catch (ex: Exception){
+
+            cursor.close()
+        } catch (ex: Exception) {
             ex.printStackTrace()
-        }   finally {
+        } finally {
             con.close()
         }
 
         return lista
     }
-
-
 }
