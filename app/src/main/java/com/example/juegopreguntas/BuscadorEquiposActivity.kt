@@ -77,5 +77,5 @@ class BuscadorEquiposActivity : AppCompatActivity() {
         binding.recyclerEquipos.layoutManager=layoutManager
         binding.recyclerEquipos.adapter=adapter
     }
-
+    //acabar de implementar el metodo que te mande al detalle del equipo
 }
