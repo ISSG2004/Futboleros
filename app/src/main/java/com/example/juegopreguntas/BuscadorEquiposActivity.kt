@@ -32,8 +32,6 @@ class BuscadorEquiposActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        //cargarEquipo()
         cargarRecycler()
         cargarEventos()
     }
@@ -58,13 +56,18 @@ class BuscadorEquiposActivity : AppCompatActivity() {
             val listaEquipos = datos.body()?.teams ?: emptyList()
 
             withContext(Dispatchers.Main) {
-                if (datos.isSuccessful) {
-                    adapter.actualizarEquipos(listaEquipos)
-                } else {
-                    adapter.actualizarEquipos(emptyList())
-                    Toast.makeText(this@BuscadorEquiposActivity, "No hay equipos disponibles", Toast.LENGTH_SHORT).show()
+                if (equipoBuscador.isEmpty()){
+
+                }else{
+                    if (datos.isSuccessful) {
+                        adapter.actualizarEquipos(listaEquipos)
+                    } else {
+                        adapter.actualizarEquipos(emptyList())
+                        Toast.makeText(this@BuscadorEquiposActivity, "No hay equipos disponibles", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
+                }
+
         }
     }
 

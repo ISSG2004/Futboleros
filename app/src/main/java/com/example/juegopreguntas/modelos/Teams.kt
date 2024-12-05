@@ -7,6 +7,7 @@ data class Teams(
     val strTeam: String,
     val strBadge: String,
     val strCountry: String,
+    val strWebsite:String,
 ):Serializable
 data class TeamsResponse(
     val teams: List<Teams>
