@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.juegopreguntas.adapter.AdapterEquipos
 import com.example.juegopreguntas.api.ApiClient
 import com.example.juegopreguntas.databinding.ActivityBuscadorEquiposBinding
@@ -19,7 +20,7 @@ import kotlinx.coroutines.withContext
 class BuscadorEquiposActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBuscadorEquiposBinding
     private val adapter = AdapterEquipos() // Iniciar con lista vacía
-    private var equipoBuscador = "" // Inicializar como string vacío o con el valor que necesites
+    private var equipoBuscador = "arsenal" // Inicializar como string vacío o con el valor que necesites
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,42 +33,46 @@ class BuscadorEquiposActivity : AppCompatActivity() {
             insets
         }
 
-        cargarEquipo()
+        //cargarEquipo()
         cargarRecycler()
         cargarEventos()
     }
 
     private fun cargarEventos() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean { // Acción cuando se envía la consulta
-                equipoBuscador = query ?: ""
+            override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-            override fun onQueryTextChange(newText: String?): Boolean { // Acción cuando cambia el texto
+
+            override fun onQueryTextChange(newText: String?): Boolean {
                 equipoBuscador = newText ?: ""
-                adapter.getFilter(equipoBuscador)
-                return false
+                cargarEquipo() // Consultar equipos desde la API
+                return true
             }
         })
     }
 
-    private fun cargarRecycler() {
-        binding.recyclerEquipos.adapter = adapter
-    }
-
     private fun cargarEquipo() {
         lifecycleScope.launch(Dispatchers.IO) {
-            val datos = ApiClient.apiClient.cargarEquipos(equipoBuscador)
-            val listaEquipos = datos.body()?.teams ?: emptyList<Teams>()
+            val datos = ApiClient.apiClient.cargarEquipos(equipoBuscador) // Enviar búsqueda dinámica a la API
+            val listaEquipos = datos.body()?.teams ?: emptyList()
 
             withContext(Dispatchers.Main) {
                 if (datos.isSuccessful) {
-                    // Actualizar la lista de equipos con la nueva respuesta
                     adapter.actualizarEquipos(listaEquipos)
                 } else {
+                    adapter.actualizarEquipos(emptyList())
                     Toast.makeText(this@BuscadorEquiposActivity, "No hay equipos disponibles", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
+
+
+    private fun cargarRecycler() {
+        val layoutManager= GridLayoutManager(this, 1)
+        binding.recyclerEquipos.layoutManager=layoutManager
+        binding.recyclerEquipos.adapter=adapter
+    }
+
 }

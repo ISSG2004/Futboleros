@@ -5,7 +5,7 @@ import java.io.Serializable
 data class Teams(
     val idTeam: String,
     val strTeam: String,
-    val strTeamBadge: String,
+    val strBadge: String,
     val strCountry: String,
 ):Serializable
 data class TeamsResponse(

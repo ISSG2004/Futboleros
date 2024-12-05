@@ -16,7 +16,7 @@ class EquiposViewHolder(v: View): RecyclerView.ViewHolder(v) {
         binding.lbNombreEquipo.text = team.strTeam
         binding.lbPais.text = team.strCountry
         // Cargar la imagen del logo del equipo con Picasso
-        Picasso.get().load(team.strTeamBadge).into(binding.ivEscudo)
+        Picasso.get().load(team.strBadge).into(binding.ivEscudo)
     }
 }
 
