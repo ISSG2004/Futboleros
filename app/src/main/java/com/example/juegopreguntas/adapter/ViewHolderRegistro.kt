@@ -3,7 +3,6 @@ package com.example.juegopreguntas.adapter
 
 import android.content.Intent
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.juegopreguntas.EditarRegistroActivity
 import com.example.juegopreguntas.databinding.RegistroPartidasBinding
