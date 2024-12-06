@@ -30,4 +30,5 @@
     <string name="btn_borrar">Borrar</string>
     <string name="btn_editar">Editar</string>
     <string name="lb_resultado_final">Has acertado %1$s preguntas</string>
+    <string name="ir_a_web">Ir a web</string>
 </resources>

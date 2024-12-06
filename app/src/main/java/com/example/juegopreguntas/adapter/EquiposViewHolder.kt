@@ -11,11 +11,17 @@ class EquiposViewHolder(v: View): RecyclerView.ViewHolder(v) {
     val binding = TarjetaEquipoBinding.bind(v)
 
     // Método para cargar el logo del equipo utilizando Picasso
-    fun cargarEquipos(team: Teams) {
+    fun cargarEquipos(
+            team: Teams,
+            irWeb: (Teams) -> Unit
+    ) {
         binding.lbNombreEquipo.text = team.strTeam
         binding.lbPais.text = team.strCountry
         // Cargar la imagen del logo del equipo con Picasso
         Picasso.get().load(team.strBadge).into(binding.ivEscudo)
+        binding.btnWeb.setOnClickListener {
+            irWeb(team)
+        }
     }
 }
 

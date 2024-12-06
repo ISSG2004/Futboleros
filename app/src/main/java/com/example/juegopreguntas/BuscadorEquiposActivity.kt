@@ -1,5 +1,6 @@
 package com.example.juegopreguntas
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.SearchView
 import android.widget.Toast
@@ -19,7 +20,18 @@ import kotlinx.coroutines.withContext
 
 class BuscadorEquiposActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBuscadorEquiposBinding
-    private val adapter = AdapterEquipos() // Iniciar con lista vacía
+    private val adapter = AdapterEquipos(
+        irWeb = { equipo ->
+            irWeb(equipo)
+        }
+    )
+
+    private fun irWeb(equipo: Teams) {
+        var intent = Intent(this, DetalleEquipoActivity::class.java)
+        intent.putExtra("EQUIPO", equipo)
+        startActivity(intent)
+    }
+
     private var equipoBuscador = "arsenal" // Inicializar como string vacío o con el valor que necesites
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +60,10 @@ class BuscadorEquiposActivity : AppCompatActivity() {
                 return true
             }
         })
+        binding.btnVolver.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
     }
 
     private fun cargarEquipo() {

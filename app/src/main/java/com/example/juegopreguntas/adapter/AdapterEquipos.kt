@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.juegopreguntas.R
 
 import com.example.juegopreguntas.modelos.Teams
-class AdapterEquipos(private var equiposOriginales: List<Teams> = emptyList()) : RecyclerView.Adapter<EquiposViewHolder>() {
+class AdapterEquipos(
+    private var equiposOriginales: List<Teams> = emptyList(),
+    private var irWeb: (Teams) -> Unit
+) : RecyclerView.Adapter<EquiposViewHolder>() {
     private var equiposMostrados: MutableList<Teams> = equiposOriginales.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EquiposViewHolder {
@@ -17,7 +20,7 @@ class AdapterEquipos(private var equiposOriginales: List<Teams> = emptyList()) :
 
     override fun onBindViewHolder(holder: EquiposViewHolder, position: Int) {
         val team = equiposMostrados[position]
-        holder.cargarEquipos(team)
+        holder.cargarEquipos(team,irWeb)
     }
 
     override fun getItemCount() = equiposMostrados.size
@@ -32,7 +35,8 @@ class AdapterEquipos(private var equiposOriginales: List<Teams> = emptyList()) :
         equiposMostrados = if (equipoBuscado.isBlank()) {
             equiposOriginales.toMutableList()
         } else {
-            equiposOriginales.filter { it.strTeam.contains(equipoBuscado, ignoreCase = true) }.toMutableList()
+            equiposOriginales.filter { it.strTeam.contains(equipoBuscado, ignoreCase = true) }
+                .toMutableList()
         }
         notifyDataSetChanged()
     }
