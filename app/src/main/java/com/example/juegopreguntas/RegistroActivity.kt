@@ -3,6 +3,7 @@ package com.example.juegopreguntas
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -49,10 +50,16 @@ class RegistroActivity : AppCompatActivity() {
     }
     @SuppressLint("NotifyDataSetChanged")
     private fun borrar(posicion: Int) {
-        lista.removeAt(posicion)
-        Crud().borrar(posicion)
-        adapter.notifyItemRemoved(posicion)
+        val idPartida = lista[posicion].id
+        if (Crud().borrar(idPartida)) {
+            lista.removeAt(posicion)
+            adapter.notifyItemRemoved(posicion)
+            Toast.makeText(this, "Registro eliminado con éxito", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Error al eliminar el registro", Toast.LENGTH_SHORT).show()
+        }
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private fun editar(partida: Partida) {
         val posicion = lista.indexOf(partida)

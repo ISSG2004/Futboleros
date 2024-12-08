@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="google_client_id" translatable="false" formatted="false">943388584730-vv38hokefkjqj5lkvladg9s2f9tkmbo8.apps.googleusercontent.com</string>
+    <string name="api_maps_key" formatted="false" translatable="false">AIzaSyDrnnBmj7t8c9JJDpEGH1ACN-Rgi9UM3b4</string>
 </resources>

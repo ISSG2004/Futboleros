@@ -57,7 +57,7 @@ class Crud {
         return lista
     }
 
-    fun borrar(id: Int): Boolean {
+    fun borrar(id: Long): Boolean {
         val con = Aplicacion.llave.writableDatabase
         val partidaBorrada = con.delete(Aplicacion.TABLA_PARTIDAS, "id=?", arrayOf(id.toString()))
         con.close()

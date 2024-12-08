@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, BuscadorEquiposActivity::class.java))
             finish()
         }
+        binding.btnMapa.setOnClickListener {
+            startActivity(Intent(this, MapaActivity::class.java))
+            finish()
+        }
     }
 
     private fun generarPreguntasJuego():MutableList<Pregunta>{

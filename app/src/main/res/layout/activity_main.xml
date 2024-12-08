@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <Button
         android:id="@+id/btn_inicioJuego"
         android:layout_width="170dp"
@@ -21,20 +22,20 @@
         android:id="@+id/btn_cerrar"
         android:layout_width="170dp"
         android:layout_height="0dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="84dp"
         android:text="@string/btn_cerrar_sesion"
         app:layout_constraintEnd_toEndOf="@+id/btn_lista_equipos"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_lista_equipos"
         app:layout_constraintTop_toBottomOf="@+id/btn_lista_equipos" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="411dp"
-        android:layout_height="330dp"
+        android:layout_width="415dp"
+        android:layout_height="300dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -60,4 +61,14 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_registro"
         app:layout_constraintStart_toStartOf="@+id/btn_registro"
         app:layout_constraintTop_toBottomOf="@+id/btn_registro" />
+
+    <Button
+        android:id="@+id/btn_mapa"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:text="Mejores estadios de España"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cerrar"
+        app:layout_constraintEnd_toEndOf="@+id/btn_lista_equipos"
+        app:layout_constraintStart_toStartOf="@+id/btn_lista_equipos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_lista_equipos" />
 </androidx.constraintlayout.widget.ConstraintLayout>

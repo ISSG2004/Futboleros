@@ -43,6 +43,10 @@ android {
 }
 
 dependencies {
+    //fragments
+    implementation (libs.androidx.fragment.ktx)
+    //mapas
+    implementation(libs.play.services.maps)
     // Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson) // Para usar Gson como convertidor JSON
